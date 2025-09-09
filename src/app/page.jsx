@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import ToastProvider from "@/components/ToastProvider";
@@ -17,14 +16,37 @@ export default function Home() {
       <main className="content-wrapper">
         {/* Card principal do aluno */}
         <div className="pokemon-card p-8 mb-8">
-          <div className="flex flex-col lg:flex-row items-center gap-8">
+          <div className="flex flex-col items-center">
             {/* Avatar do Aluno */}
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 mb-6">
               <div className="relative">
-                <div className="w-40 h-40 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white text-6xl font-bold shadow-lg">
-                  DS
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-yellow-400 rounded-full flex items-center justify-center text-2xl">
+                <img 
+                  src="/eu.png" 
+                  alt="Foto de perfil - João Gianoni"
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                    borderRadius: '50%',
+                    objectFit: 'cover',
+                    border: '3px solid #3b82f6',
+                    boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+                  }}
+                />
+                <div 
+                  style={{
+                    position: 'absolute',
+                    bottom: '2px',
+                    right: '2px',
+                    width: '20px',
+                    height: '20px',
+                    backgroundColor: '#facc15',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '12px'
+                  }}
+                >
                   ⚡
                 </div>
               </div>
@@ -39,15 +61,15 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="pokemon-stat">
                   <span className="font-semibold text-blue-600">👨‍🎓 Turma:</span>
-                  <span className="text-gray-800">DS-2025</span>
+                  <span className="text-gray-800">2TDS2</span>
                 </div>
                 <div className="pokemon-stat">
                   <span className="font-semibold text-blue-600">🏫 Escola:</span>
-                  <span className="text-gray-800">Escola de Desenvolvimento</span>
+                  <span className="text-gray-800">SENAI Valinhos</span>
                 </div>
                 <div className="pokemon-stat">
                   <span className="font-semibold text-blue-600">👤 Aluno:</span>
-                  <span className="text-gray-800">João Silva Santos</span>
+                  <span className="text-gray-800">João Gianoni</span>
                 </div>
                 <div className="pokemon-stat">
                   <span className="font-semibold text-blue-600">📅 Data:</span>
@@ -57,10 +79,9 @@ export default function Home() {
               
               <blockquote className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-400 italic text-gray-700 mb-6 rounded-lg">
                 <p className="text-lg leading-relaxed">
-                  "O conhecimento é a única coisa que cresce quando é compartilhada. 
-                  Cada linha de código é um passo em direção ao futuro da tecnologia!"
+                  "Seu destino está nas suas mãos!"
                 </p>
-                <footer className="text-sm text-gray-500 mt-2">— Filosofia do Desenvolvedor</footer>
+                <footer className="text-sm text-gray-500 mt-2">— Pokémon</footer>
               </blockquote>
               
               <div className="flex flex-col sm:flex-row gap-4">
@@ -83,26 +104,19 @@ export default function Home() {
         </div>
         
         {/* Cards de recursos */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="pokemon-card p-6 text-center">
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginTop: '3rem' }}>
+          <div className="pokemon-card p-10 text-center" style={{ margin: '1rem' }}>
             <div className="text-4xl mb-4">📚</div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">API Info</h3>
             <p className="text-gray-600 mb-4">Conheça a PokéAPI e seus recursos</p>
             <Link href="/apiinfo" className="btn-primary">Ver Mais</Link>
           </div>
           
-          <div className="pokemon-card p-6 text-center">
+          <div className="pokemon-card p-10 text-center" style={{ margin: '1rem' }}>
             <div className="text-4xl mb-4">🎯</div>
             <h3 className="text-xl font-bold text-gray-800 mb-2">Lista Pokémon</h3>
             <p className="text-gray-600 mb-4">Explore a coleção de Pokémons</p>
             <Link href="/pokemons" className="btn-primary">Explorar</Link>
-          </div>
-          
-          <div className="pokemon-card p-6 text-center">
-            <div className="text-4xl mb-4">⚡</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Tecnologias</h3>
-            <p className="text-gray-600 mb-4">Next.js 15, React 19, Tailwind CSS</p>
-            <button className="btn-secondary" disabled>Em Breve</button>
           </div>
         </div>
       </main>

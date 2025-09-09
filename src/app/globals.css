@@ -85,13 +85,13 @@ body {
 .content-wrapper {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 6rem 6rem;
 }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
+  gap: 3rem;
   margin-top: 2rem;
 }
 
