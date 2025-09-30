@@ -1,11 +1,8 @@
 import Link from "next/link";
-import Header from "@/components/Header";
 
 export default function NotFound() {
   return (
     <div className="page-container">
-      <Header />
-      
       <main className="content-wrapper">
         <div className="pokemon-card p-12 text-center max-w-2xl mx-auto">
           <div className="text-8xl mb-6">😭</div>

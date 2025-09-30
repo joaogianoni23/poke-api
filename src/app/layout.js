@@ -1,5 +1,6 @@
 import "./globals.css";
 import 'react-toastify/dist/ReactToastify.css';
+import ToastProvider from "@/components/ToastProvider";
 
 export const metadata = {
   title: "Pokemon",
@@ -14,6 +15,7 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <body>
         {children}
+        <ToastProvider />
       </body>
     </html>
   );

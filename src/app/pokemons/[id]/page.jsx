@@ -1,20 +1,25 @@
 "use client"
 
 import { useEffect, useState } from "react";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
 import ToastProvider from "@/components/ToastProvider";
+import DeleteModal from "@/components/DeleteModal";
 
 const API_BASE = "https://pokeapi.co/api/v2";
 
 export default function PokemonDetail() {
   const params = useParams();
+  const router = useRouter();
   const id = params?.id;
   const [pokemon, setPokemon] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [deleteModal, setDeleteModal] = useState({
+    isOpen: false,
+    pokemon: null
+  });
 
   useEffect(() => {
     if (id) {
@@ -35,10 +40,28 @@ export default function PokemonDetail() {
     }
   };
 
+  const handleDeletePokemon = (pokemonId) => {
+    // Redirecionar para a lista após exclusão
+    router.push('/pokemons');
+  };
+
+  const openDeleteModal = () => {
+    setDeleteModal({
+      isOpen: true,
+      pokemon: pokemon
+    });
+  };
+
+  const closeDeleteModal = () => {
+    setDeleteModal({
+      isOpen: false,
+      pokemon: null
+    });
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           <span className="ml-3 text-gray-600">Carregando detalhes...</span>
@@ -50,7 +73,6 @@ export default function PokemonDetail() {
   if (!pokemon) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-4xl mx-auto p-8 text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             Pokémon não encontrado
@@ -79,8 +101,6 @@ export default function PokemonDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      
       <main className="max-w-4xl mx-auto p-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex flex-col lg:flex-row gap-8">
@@ -180,20 +200,32 @@ export default function PokemonDetail() {
                 </div>
               </div>
               
-              {/* Botões de Navegação */}
+              {/* Botões de Navegação e CRUD */}
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/pokemon"
-                  className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition-colors"
+                  href="/pokemons"
+                  className="btn-primary"
                 >
                   ← Voltar à Lista
                 </Link>
                 <Link
                   href="/"
-                  className="bg-gray-600 text-white px-6 py-2 rounded hover:bg-gray-700 transition-colors"
+                  className="btn-gray"
                 >
                   🏠 Ir para Home
                 </Link>
+                <Link
+                  href={`/pokemon/edit/${pokemon.id}`}
+                  className="btn-warning"
+                >
+                  ✏️ Editar Pokémon
+                </Link>
+                <button
+                  onClick={openDeleteModal}
+                  className="btn-danger"
+                >
+                  🗑️ Excluir Pokémon
+                </button>
               </div>
             </div>
           </div>
@@ -201,6 +233,14 @@ export default function PokemonDetail() {
       </main>
       
       <ToastProvider />
+      
+      {/* Modal de Exclusão */}
+      <DeleteModal
+        pokemon={deleteModal.pokemon}
+        isOpen={deleteModal.isOpen}
+        onClose={closeDeleteModal}
+        onDelete={handleDeletePokemon}
+      />
     </div>
   );
 }

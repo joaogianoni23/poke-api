@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link";
-import Header from "@/components/Header";
 import ToastProvider from "@/components/ToastProvider";
 
 export default function Home() {
@@ -11,8 +10,6 @@ export default function Home() {
 
   return (
     <div className="page-container">
-      <Header />
-      
       <main className="content-wrapper">
         {/* Card principal do aluno */}
         <div className="pokemon-card p-8 mb-8">
@@ -51,31 +48,39 @@ export default function Home() {
                 </div>
               </div>
             </div>
-            
+
             {/* Informações do Aluno */}
-            <div className="flex-1 text-center lg:text-left">
-              <h1 className="text-4xl font-bold text-gray-800 mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Pokédex Next.js 15
-              </h1>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                <div className="pokemon-stat">
-                  <span className="font-semibold text-blue-600">👨‍🎓 Turma:</span>
-                  <span className="text-gray-800">2TDS2</span>
-                </div>
-                <div className="pokemon-stat">
-                  <span className="font-semibold text-blue-600">🏫 Escola:</span>
-                  <span className="text-gray-800">SENAI Valinhos</span>
-                </div>
-                <div className="pokemon-stat">
-                  <span className="font-semibold text-blue-600">👤 Aluno:</span>
-                  <span className="text-gray-800">João Gianoni</span>
-                </div>
-                <div className="pokemon-stat">
-                  <span className="font-semibold text-blue-600">📅 Data:</span>
-                  <span className="text-gray-800">2025</span>
-                </div>
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-800 mb-3">
+                João Vitor Gianoni
+              </h2>
+              <div className="text-lg text-gray-600 space-y-2">
+                <p className="flex items-center justify-center">
+                  <span className="mr-2">🎓</span>
+                  Desenvolvimento de Sistemas
+                </p>
+                <p className="flex items-center justify-center">
+                  <span className="mr-2">📧</span>
+                  joao.gianoni@aluno.senai.br
+                </p>
+                <p className="flex items-center justify-center">
+                  <span className="mr-2">🏫</span>
+                  SENAI Valinhos
+                </p>
               </div>
+            </div>
+
+            {/* Descrição do Projeto */}
+            <div className="text-center max-w-2xl">
+              <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                🎯 Projeto Pokémon API
+              </h3>
+              <p className="text-gray-600 text-lg leading-relaxed mb-6">
+                Uma aplicação web moderna desenvolvida com <strong>Next.js</strong> que consome a 
+                <strong> PokéAPI</strong> para exibir informações detalhadas sobre Pokémons. 
+                O projeto demonstra habilidades em desenvolvimento frontend, consumo de APIs RESTful, 
+                e criação de interfaces de usuário responsivas e interativas.
+              </p>
               
               <blockquote className="p-6 bg-gradient-to-r from-blue-50 to-purple-50 border-l-4 border-blue-400 italic text-gray-700 mb-6 rounded-lg">
                 <p className="text-lg leading-relaxed">
@@ -98,30 +103,51 @@ export default function Home() {
                 >
                   🎯 Explorar Pokémons
                 </Link>
+                
+                <Link
+                  href="/pokemon/create"
+                  className="btn-success text-center"
+                >
+                  ➕ Criar Pokémon
+                </Link>
               </div>
             </div>
           </div>
         </div>
-        
-        {/* Cards de recursos */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '4rem', marginTop: '3rem' }}>
-          <div className="pokemon-card p-10 text-center" style={{ margin: '1rem' }}>
-            <div className="text-4xl mb-4">📚</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">API Info</h3>
-            <p className="text-gray-600 mb-4">Conheça a PokéAPI e seus recursos</p>
-            <Link href="/apiinfo" className="btn-primary">Ver Mais</Link>
-          </div>
+
+        {/* Seção de Tecnologias */}
+        <div className="pokemon-card p-8 mb-8">
+          <h3 className="text-2xl font-bold text-gray-800 mb-6 text-center">
+            🛠️ Tecnologias Utilizadas
+          </h3>
           
-          <div className="pokemon-card p-10 text-center" style={{ margin: '1rem' }}>
-            <div className="text-4xl mb-4">🎯</div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">Lista Pokémon</h3>
-            <p className="text-gray-600 mb-4">Explore a coleção de Pokémons</p>
-            <Link href="/pokemons" className="btn-primary">Explorar</Link>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <div className="text-3xl mb-2">⚛️</div>
+              <h4 className="font-semibold text-gray-700">Next.js</h4>
+              <p className="text-sm text-gray-500">Framework React</p>
+            </div>
+            
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <div className="text-3xl mb-2">🎨</div>
+              <h4 className="font-semibold text-gray-700">Tailwind CSS</h4>
+              <p className="text-sm text-gray-500">Estilização</p>
+            </div>
+            
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <div className="text-3xl mb-2">🔌</div>
+              <h4 className="font-semibold text-gray-700">PokéAPI</h4>
+              <p className="text-sm text-gray-500">API de Dados</p>
+            </div>
+            
+            <div className="text-center p-4 bg-gray-50 rounded-lg">
+              <div className="text-3xl mb-2">📱</div>
+              <h4 className="font-semibold text-gray-700">Responsivo</h4>
+              <p className="text-sm text-gray-500">Mobile First</p>
+            </div>
           </div>
         </div>
       </main>
-      
-      <ToastProvider />
     </div>
   );
 }

@@ -5,7 +5,6 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import Image from "next/image";
 import Link from "next/link";
-import Header from "@/components/Header";
 import ToastProvider from "@/components/ToastProvider";
 
 const API_BASE = "https://pokeapi.co/api/v2";
@@ -38,7 +37,6 @@ export default function PokemonDetail() {
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="flex justify-center items-center py-20">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
           <span className="ml-3 text-gray-600">Carregando detalhes...</span>
@@ -50,7 +48,6 @@ export default function PokemonDetail() {
   if (!pokemon) {
     return (
       <div className="min-h-screen bg-gray-50">
-        <Header />
         <div className="max-w-4xl mx-auto p-8 text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">
             Pokémon não encontrado
@@ -79,8 +76,6 @@ export default function PokemonDetail() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <Header />
-      
       <main className="max-w-4xl mx-auto p-8">
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex flex-col lg:flex-row gap-8">

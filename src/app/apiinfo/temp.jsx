@@ -1,13 +1,10 @@
 "use client";
 
-import Header from "@/components/Header";
 import Link from "next/link";
 
 function ApiInfo() {
   return (
     <div className="page-container">
-      <Header />
-      
       <main className="content-wrapper">
         <div className="pokemon-card p-8 mb-8">
           <div className="text-center mb-8">
